@@ -4,10 +4,7 @@ un elemento div del html, el cual se lo pasaremos por el ID, un objetos llamado 
 del lugar del cual queremos mostrar el mapa, y el zoom que le meteremos al mapa
 */
 var map;
-var marcador = [
-  {lat:19.4751611, lng:-99.0468698},
-  {lan:19.4856331,lng:-99.0511556}
-]
+var marcador = {lat:19.4751611, lng:-99.0468698};
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
