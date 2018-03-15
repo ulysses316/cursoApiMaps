@@ -5,6 +5,9 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <!-- Es importante que importemos en la parte superior axios, para que lo detecte nuestro JS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
   </head>
   <body>
     <h1>Mi mapa</h1>
@@ -12,8 +15,7 @@
 
 
     <div id="map"></div>
-
-
+<!-- Es importante importar primero nuestro archivo JS y despues la API del mapa estatico -->
     <script src="script.js" charset="utf-8"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmlJky0d55y9q9i7XY9oyIvxJoYfUv5_I&callback=initMap"
     async defer></script>
