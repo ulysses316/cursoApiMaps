@@ -4,6 +4,8 @@ un elemento div del html, el cual se lo pasaremos por el ID, un objetos llamado 
 del lugar del cual queremos mostrar el mapa, y el zoom que le meteremos al mapa
 */
 var map;
+var coords;
+
 //var marcador = {lat:19.4751611, lng:-99.0468698};
 
 /*Esta funcion es la que inicialza el mapa en el html y es la cual importamos por medio del script de la api
@@ -27,18 +29,20 @@ function agregarMarcador(cordenadas, flag){
 }
 
 //Asi es como invocamos nuestra funcion de marcadores
-agregarMarcador({lat: 19.4751611, lng: -99.0468698},);
-agregarMarcador({lat: 19.6021021, lng: -99.0631558},);
+//agregarMarcador({lat: 19.4751611, lng: -99.0468698},);
+//agregarMarcador({lat: 19.6021021, lng: -99.0631558},);
+agregarMarcador(coords)
 }
+
 // ===================================API GEOCODING======================================= //
 //Creaos la funcion geoCode para encapsular el servicio de google geo code
-function geoCode(){
+function geoCode(lugar){
   //usasmos la funcion axios con su parametro get (en la que hacemos peticion get "obviously") y le
   // pasamos nuestra URL de la que consumiremos el servicio, y concatenamos por medio de objetos
   //los parametros
   axios.get('https://maps.googleapis.com/maps/api/geocode/json?',{
   params:{
-    address:'CDMX',
+    address:lugar,
     key:'AIzaSyDmlJky0d55y9q9i7XY9oyIvxJoYfUv5_I'
   }
   })
@@ -47,10 +51,12 @@ function geoCode(){
     console.log(response);
     //imprimir respuesta address_components
     console.log(response.data.results[0].address_components[0].long_name)
+    //agregar valor a las variables
+    coords = response.data.results[0].geometry.location
   })
   .catch(function (error){
     console.log(error)
   })
 }
 
-geoCode()    // ejecutamos la funcion 
+geoCode("san cristobal ecatepec")    // ejecutamos la funcion
